@@ -55,3 +55,15 @@ class BookSerializer(serializers.ModelSerializer):
 
 Validation kya hota hai?
 Socho tum ek form fill karo jisme price daalni hai. Agar koi -500 daale — yeh galat hai! Validation yeh check karta hai ke data sahi hai ya nahi save karne se pehle. """
+# Type 1 — Field level validation
+# Ek specific field check karo:
+def validate_price(self,value):
+    if value<0:
+        raise serializers.ValidationError("Negative value not exist")
+    return value
+# Type 2 — Object level validation
+# Do fields ko ek saath compare karo:
+def validate_title(self,data):
+    if data["start_date"]>data["end_date"]:
+        raise serializers.ValidationError("End Date can't be confirmed")
+    return data
