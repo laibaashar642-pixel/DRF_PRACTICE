@@ -2,8 +2,10 @@ from django.shortcuts import render
 from rest_framework.views import APIView, Http404
 from rest_framework.views import Response
 from rest_framework.views import status
+from rest_framework import generics
+
 from .models import Student
-from .serializers import StudentSerializer
+from .serializers import BookSerializer, StudentSerializer
 # Create your views here.
 #Generic View
 class StudentDetailView(APIView):
@@ -45,3 +47,13 @@ Standard CRUD — list, create, retrieve, update, delete
 ViewSet
 Poora REST API quickly banana ho — Topic 4 mein cover hoga """
 #Get Api View for gett,post,put,delete
+#in generic form the code is
+# List + Create — GET aur POST dono!
+class StudentListCreateView(generics.ListCreateAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+
+# Retrieve + Update + Delete — GET, PUT, DELETE!
+class StudentDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
