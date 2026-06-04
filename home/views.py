@@ -63,3 +63,15 @@ class StudentDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 
 
+#Viewsets kia hoty hai jin mai automatically sb kuch router sai a ajata hai usmay api view ki trah nai itna zyada acode hota hai
+#Two types hoti hai model view set(Full Crud) read only viewset(sirf get only)
+from rest_framework import viewsets
+class StudentViewSet(viewsets.ModelViewSet):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+
+#Read only model view set
+
+""" class StudentViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer """
