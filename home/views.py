@@ -10,13 +10,13 @@ from .serializers import StudentSerializer
 # Create your views here.
 
 # APIView
-class StudentDetailView(APIView):
+""" class StudentDetailView(APIView):
     def get_object(self, pk):
         try:
             return Student.objects.get(pk=pk)
         except Student.DoesNotExist:
             raise Http404
-
+ """
 class StudentListView(APIView):
     def get(self,request):
         students=Student.objects.all()
@@ -70,7 +70,7 @@ class StudentViewSet(viewsets.ModelViewSet):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
 
-#Read only model view set
+#Read only model view set at a time ham aik hi model use kr skty hai 
 
 """ class StudentViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Student.objects.all()
