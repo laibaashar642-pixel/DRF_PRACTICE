@@ -4,8 +4,7 @@ from django.http import Http404
 from rest_framework.response import Response
 from rest_framework.views import status
 from rest_framework import generics
-
-from .models import Student
+from.models import Student
 from .serializers import StudentSerializer
 # Create your views here.
 
